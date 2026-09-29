@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rathina Cholan B - MCA Generative AI Portfolio">
+  <title>Rathina Cholan B | Generative AI Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07111f; --bg2:#0b1728; --card:rgba(16,31,52,.72);
+      --text:#eef6ff; --muted:#9db0c7; --accent:#64e7ff; --accent2:#8b7cff;
+      --line:rgba(255,255,255,.09); --shadow:0 20px 60px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:78px}
+    body{font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at 15% 10%,rgba(100,231,255,.11),transparent 25%),radial-gradient(circle at 85% 20%,rgba(139,124,255,.13),transparent 28%),var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,92%);margin:auto}
+    header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,17,31,.72);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:.3s}
+    header.scrolled{border-bottom-color:var(--line);box-shadow:0 8px 30px rgba(0,0,0,.16)}
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-family:"Space Grotesk";font-weight:700;font-size:1.2rem;letter-spacing:.5px}
+    .logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:25px;list-style:none}
+    .nav-links a{color:var(--muted);font-size:.92rem;font-weight:600;transition:.25s}
+    .nav-links a:hover,.nav-links a.active{color:var(--text)}
+    .menu{display:none;background:none;border:0;color:white;font-size:1.5rem;cursor:pointer}
+    section{padding:105px 0}
+    .hero{min-height:100vh;display:flex;align-items:center;padding-top:110px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:55px;align-items:center}
+    .eyebrow{color:var(--accent);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:.78rem;margin-bottom:16px}
+    h1{font-family:"Space Grotesk";font-size:clamp(2.8rem,7vw,5.7rem);line-height:1.02;letter-spacing:-3px;margin-bottom:22px}
+    h1 span{background:linear-gradient(90deg,var(--accent),#b59cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:1.08rem;color:var(--muted);max-width:650px}
+    .buttons{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:12px;border:1px solid var(--line);font-weight:700;font-size:.9rem;transition:.25s;cursor:pointer}
+    .btn-primary{background:linear-gradient(135deg,var(--accent),#8b7cff);color:#06101c;border:0}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(100,231,255,.12)}
+    .hero-card{background:linear-gradient(145deg,rgba(100,231,255,.1),rgba(139,124,255,.08));border:1px solid var(--line);border-radius:28px;padding:35px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero-card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:var(--accent);filter:blur(80px);opacity:.15;top:-80px;right:-50px}
+    .avatar{width:105px;height:105px;border-radius:28px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06101c;font-family:"Space Grotesk";font-size:2.1rem;font-weight:800;margin-bottom:24px}
+    .hero-card h3{font-family:"Space Grotesk";font-size:1.5rem}
+    .hero-card p{font-size:.92rem;margin-top:8px}
+    .contact-mini{margin-top:25px;display:grid;gap:11px;color:var(--muted);font-size:.88rem}
+    .section-head{margin-bottom:42px}
+    .section-head .eyebrow{margin-bottom:8px}
+    .section-head h2{font-family:"Space Grotesk";font-size:clamp(2rem,4vw,3rem);letter-spacing:-1px}
+    .section-head p{color:var(--muted);margin-top:8px;max-width:680px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+    .card h3{font-family:"Space Grotesk";margin-bottom:12px}
+    .card p{color:var(--muted)}
+    .timeline{display:grid;gap:17px}
+    .timeline-item{border-left:2px solid rgba(100,231,255,.4);padding-left:18px}
+    .timeline-item .date{font-size:.8rem;color:var(--accent);font-weight:700}
+    .timeline-item h3{margin:4px 0 2px;font-size:1rem}
+    .timeline-item p{font-size:.88rem}
+    .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .skill{padding:23px;border:1px solid var(--line);background:rgba(16,31,52,.55);border-radius:18px;transition:.25s}
+    .skill:hover{transform:translateY(-6px);border-color:rgba(100,231,255,.3)}
+    .skill .icon{font-size:1.5rem;margin-bottom:12px}
+    .skill h3{font-size:1rem}
+    .skill p{font-size:.82rem;color:var(--muted);margin-top:5px}
+    .project-grid{display:grid;grid-template-columns:1fr;max-width:850px}
+    .project{padding:30px;position:relative;overflow:hidden}
+    .project-badge{display:inline-block;color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+    .project h3{font-family:"Space Grotesk";font-size:1.55rem;margin-bottom:10px}
+    .project p{color:var(--muted)}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+    .tag{font-size:.75rem;padding:6px 9px;border-radius:99px;background:rgba(100,231,255,.08);border:1px solid rgba(100,231,255,.14);color:#c8f6ff}
+    .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:25px}
+    .contact-list{display:grid;gap:14px;margin-top:20px}
+    .contact-item{padding:15px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}
+    .contact-item small{display:block;color:var(--muted);margin-bottom:3px}
+    .contact-item a{word-break:break-word}
+    form{display:grid;gap:14px}
+    input,textarea{width:100%;background:#091626;border:1px solid var(--line);border-radius:12px;color:white;padding:14px;font:inherit;outline:none}
+    input:focus,textarea:focus{border-color:rgba(100,231,255,.5)}
+    textarea{min-height:150px;resize:vertical}
+    footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+    .footer-row{display:flex;justify-content:space-between;gap:15px;align-items:center}
+    .top{position:fixed;right:20px;bottom:20px;width:43px;height:43px;border-radius:50%;border:1px solid var(--line);background:#0c1b2e;color:white;display:grid;place-items:center;opacity:0;pointer-events:none;transition:.25s;z-index:50}
+    .top.show{opacity:1;pointer-events:auto}
+    .reveal{opacity:0;transform:translateY(35px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.left{transform:translateX(-40px)}
+    .reveal.right{transform:translateX(40px)}
+    .reveal.visible{opacity:1;transform:none}
+    .delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+    @media(max-width:850px){
+      .nav-links{position:absolute;top:72px;left:0;right:0;background:#081424;display:none;flex-direction:column;padding:20px 4%;border-bottom:1px solid var(--line)}
+      .nav-links.open{display:flex}.menu{display:block}
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,1fr)}
+      .hero{min-height:auto;padding:145px 0 90px}
+    }
+    @media(max-width:520px){
+      section{padding:80px 0}.skills{grid-template-columns:1fr 1fr}.hero-card{padding:25px}
+      h1{letter-spacing:-2px}.footer-row{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+<header id="header">
+  <div class="container">
+    <nav>
+      <a class="logo" href="#home">Rathina<span>.</span></a>
+      <button class="menu" id="menu" aria-label="Open menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li><li><a href="#projects">Project</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="reveal left">
+      <div class="eyebrow">MCA • Generative AI</div>
+      <h1>Hi, I'm <span>Rathina Cholan</span>.</h1>
+      <p>Technology enthusiast interested in the intersection of data and artificial intelligence, with a focus on Generative AI, LLMs, neural networks, automation and data analysis.</p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="#projects">View Project</a>
+        <a class="btn" href="#contact">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-card reveal right delay-1">
+      <div class="avatar">RC</div>
+      <h3>Rathina Cholan B</h3>
+      <p>MCA — Generative AI</p>
+      <div class="contact-mini">
+        <div>📍 Chennai, India</div>
+        <div>📞 <a href="tel:+919345668436">9345668436</a></div>
+        <div>✉️ <a href="mailto:rathinacholan@gmail.com">rathinacholan@gmail.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">About Me</div>
+      <h2>Data + AI + Technology</h2>
+      <p>Building a foundation in software, testing and Generative AI while exploring practical ways AI can automate complex tasks and create useful applications.</p>
+    </div>
+    <div class="about-grid">
+      <div class="card reveal left">
+        <h3>My Focus</h3>
+        <p>I am pursuing a Master's degree in Computer Applications with a specialized focus on Generative AI. I am fascinated by how LLMs and neural networks can be leveraged to automate complex tasks, generate creative content and analyze large amounts of data.</p>
+      </div>
+      <div class="card reveal right">
+        <h3>Career Interests</h3>
+        <p>Generative AI, software development, databases, software testing, automation testing and web technologies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-head reveal"><div class="eyebrow">Education</div><h2>Academic Journey</h2></div>
+    <div class="card reveal">
+      <div class="timeline">
+        <div class="timeline-item"><div class="date">2026 – 2028</div><h3>Master of Computer Applications — Generative AI</h3><p>SRM Institute of Science and Technology, Ramapuram</p></div>
+        <div class="timeline-item"><div class="date">2022 – 2025</div><h3>Bachelor of Computer Applications — 7.14 CGPA</h3><p>Sir Issac Newton Arts and Science College, Nagapattinam</p></div>
+        <div class="timeline-item"><div class="date">2021 – 2022</div><h3>HSC — 60.83%</h3><p>Veludayar Higher Secondary School, Thiruvarur</p></div>
+        <div class="timeline-item"><div class="date">2019 – 2020</div><h3>SSLC — 70.6%</h3><p>The Merit Higher Secondary School, Thiruvarur</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-head reveal"><div class="eyebrow">Technical Skills</div><h2>What I Work With</h2></div>
+    <div class="skills">
+      <div class="skill reveal delay-1"><div class="icon">☕</div><h3>Java</h3><p>Core programming</p></div>
+      <div class="skill reveal delay-2"><div class="icon">🗄️</div><h3>Database & SQL</h3><p>Database management and SQL</p></div>
+      <div class="skill reveal delay-3"><div class="icon">🤖</div><h3>Generative AI</h3><p>AI and LLM concepts</p></div>
+      <div class="skill reveal delay-1"><div class="icon">🧪</div><h3>Software Testing</h3><p>Manual & automation testing</p></div>
+      <div class="skill reveal delay-2"><div class="icon">🔎</div><h3>Selenium</h3><p>Automation testing tool</p></div>
+      <div class="skill reveal delay-3"><div class="icon">🌐</div><h3>HTML</h3><p>Web development</p></div>
+      <div class="skill reveal delay-1"><div class="icon">🎨</div><h3>CSS</h3><p>Responsive styling</p></div>
+      <div class="skill reveal delay-2"><div class="icon">⚙️</div><h3>Automation</h3><p>Testing workflows</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-head reveal"><div class="eyebrow">Project</div><h2>Featured Work</h2></div>
+    <div class="project-grid">
+      <article class="card project reveal left">
+        <div class="project-badge">Desktop Application</div>
+        <h3>All in One Utility</h3>
+        <p>A desktop application developed using Visual Studio that integrates multiple everyday utilities into one simple and user-friendly interface, including a calculator, notepad and file manager.</p>
+        <div class="tags"><span class="tag">Visual Studio</span><span class="tag">Desktop App</span><span class="tag">Calculator</span><span class="tag">Notepad</span><span class="tag">File Manager</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal"><div class="eyebrow">Contact</div><h2>Let's Connect</h2><p>Use the details below or send a message. The form opens your default email application with the message filled in.</p></div>
+    <div class="contact-grid">
+      <div class="card reveal left">
+        <h3>Contact Details</h3>
+        <div class="contact-list">
+          <div class="contact-item"><small>Email</small><a href="mailto:rathinacholan@gmail.com">rathinacholan@gmail.com</a></div>
+          <div class="contact-item"><small>Phone</small><a href="tel:+919345668436">9345668436</a></div>
+          <div class="contact-item"><small>Location</small><span>Chennai, India</span></div>
+        </div>
+      </div>
+      <div class="card reveal right">
+        <form id="contactForm">
+          <input id="name" type="text" placeholder="Your name" required>
+          <input id="email" type="email" placeholder="Your email" required>
+          <textarea id="message" placeholder="Your message" required></textarea>
+          <button class="btn btn-primary" type="submit">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <span>© <span id="year"></span> Rathina Cholan B. All rights reserved.</span>
+    <span>MCA • Generative AI</span>
+  </div>
+</footer>
+<a class="top" id="top" href="#home" aria-label="Back to top">↑</a>
+
+<script>
+  const header = document.getElementById('header');
+  const topBtn = document.getElementById('top');
+  const menu = document.getElementById('menu');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+    topBtn.classList.toggle('show', window.scrollY > 500);
+  }, {passive:true});
+
+  menu.addEventListener('click', () => navLinks.classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const sections = document.querySelectorAll('main section');
+  const links = document.querySelectorAll('.nav-links a');
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+      }
+    });
+  }, {rootMargin:'-35% 0px -55% 0px'});
+  sections.forEach(section => sectionObserver.observe(section));
+
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const subject = encodeURIComponent('Portfolio Contact from ' + name);
+    const body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\n\\n' + message);
+    window.location.href = `mailto:rathinacholan@gmail.com?subject=${subject}&body=${body}`;
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
